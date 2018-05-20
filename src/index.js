@@ -1,8 +1,13 @@
 import Vue from "vue";
 
+let data = {
+    message: "Hello World!"
+};
+
 const vue = new Vue({
     el: "#app",
-    data: {
-        message: "Hello World!"
+    data,
+    created: function() {
+        console.log({data});
     }
 });
