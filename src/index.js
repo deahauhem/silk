@@ -11,3 +11,4 @@ const vue = new Vue({
         console.log({data});
     }
 });
+

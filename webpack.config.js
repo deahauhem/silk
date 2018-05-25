@@ -1,20 +1,25 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
-	"module": {
-		"rules": [
-			{
-				"test": /\.tsx?$/,
-				"loader": "ts-loader"
-			}
-		]
-	},
-	"plugins": [
-		new HtmlWebpackPlugin({
-			"title": "Index",
-            "template": "./src/index.html"
-		})
-	],
-    "devtool": "cheap-eval-source-map"
-
+  "mode": process.env["NODE_ENV"] === "production" ? 
+    "production" : "development",
+  "resolve": {
+    "alias": {
+      "vue$": "vue/dist/vue.esm.js"
+    }
+  },
+  "plugins": [
+    new HtmlWebpackPlugin({
+      "title": "Index",
+      "template": "./src/index.html",
+      /*
+      "minify": {
+        "removeComments": true,
+        "collapseWhitespace": true,
+        "removeAttributeQuotes": true  
+      }
+      */
+    })
+  ],
 }
